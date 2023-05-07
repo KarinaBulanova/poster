@@ -61,5 +61,16 @@ public class MovieManagerTest {
         Assertions.assertArrayEquals(actual, expected);
     }
 
+    @Test
+    public void showFieldWithoutFilms() {
+        MovieManager manager = new MovieManager(3);
+
+
+        String[] actual = manager.findLast();
+        String[] expected = {};
+
+        Assertions.assertArrayEquals(actual, expected);
+    }
+
 
 }

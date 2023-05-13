@@ -62,12 +62,35 @@ public class MovieManagerTest {
     }
 
     @Test
-    public void showFieldWithoutFilms() {
-        MovieManager manager = new MovieManager(3);
+    public void filmsShownEqualToTheLimit() {
+        MovieManager manager = new MovieManager(5);
+
+        manager.add("Movie 1");
+        manager.add("Movie 2");
+        manager.add("Movie 3");
+        manager.add("Movie 4");
+        manager.add("Movie 5");
 
 
         String[] actual = manager.findLast();
-        String[] expected = {};
+        String[] expected = {"Movie 5", "Movie 4", "Movie 3", "Movie 2", "Movie 1"};
+
+        Assertions.assertArrayEquals(actual, expected);
+    }
+
+    @Test
+    public void filmsShownBelowTheLimit() {
+        MovieManager manager = new MovieManager(5);
+
+        manager.add("Movie 1");
+        manager.add("Movie 2");
+        manager.add("Movie 3");
+        manager.add("Movie 4");
+
+
+
+        String[] actual = manager.findLast();
+        String[] expected = {"Movie 4", "Movie 3", "Movie 2", "Movie 1"};
 
         Assertions.assertArrayEquals(actual, expected);
     }
